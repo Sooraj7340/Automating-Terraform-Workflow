@@ -17,34 +17,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/Sooraj7340/Automating-Terraform-Workflow.git'
             }
         }
-        stage('Check AWS CLI Config') {
-    steps {
-        sh '''
-            aws --version
-            aws configure list
-        '''
-    }
-}
-
-        stage('Check Time') {
-    steps {
-        sh 'date'
-    }
-}
-
-
-
-        stage('Check AWS Credentials') {
-    steps {
-        sh '''
-            echo "AWS Access Key: $AWS_ACCESS_KEY_ID"
-            echo "AWS Secret Key: $AWS_SECRET_ACCESS_KEY"
-            aws sts get-caller-identity
-        '''
-    }
-}
         
-
         stage('Plan') {
             steps {
                 sh ''' 
